@@ -1,7 +1,12 @@
 name: Manual test execution.
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      testInput:
+        description: 'Test input'     
+        required: true
+        default: 'ENV Variables test'
     
 
 jobs:
@@ -19,3 +24,8 @@ jobs:
         run: npm ci
       - name: Run tests
         run: npm run test
+      - name: Workflow input
+        run: |
+          echo "Test Input: $TEST_INPUT"
+        env:
+          TEST_INPUT: ${{ github.event.inputs.testInput }}
