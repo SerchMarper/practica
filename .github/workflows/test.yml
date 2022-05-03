@@ -6,8 +6,11 @@ on:
       testInput:
         description: 'Test input'     
         required: true
-        default: 'ENV Variables test'
-    
+        default: 'Ciocca'
+        type: choice
+        options:
+        - Ciocca
+        - Dallas 
 
 jobs:
   test:
@@ -28,4 +31,4 @@ jobs:
         run: |
           echo "Test Input: $TEST_INPUT"
         env:
-          TEST_INPUT: ${{ github.event.inputs.testInput }}
+          TEST_INPUT: ${{ github.event.inputs.testInput }}.com
